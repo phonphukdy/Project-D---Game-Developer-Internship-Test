@@ -1,4 +1,3 @@
-using System.Net.NetworkInformation;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,8 +7,10 @@ namespace ProjectD.Core
     public class Movement : MonoBehaviour
     {
         [SerializeField] private InputActionAsset _inputActions;
-        [SerializeField] private float _jumpVelocity;
-        [SerializeField] private float _moveVelocity;
+        [SerializeField] private float _jumpVelocity = 5;
+        [SerializeField] private float _moveVelocity = 5;
+        [SerializeField] private LayerMask _groundLayer;
+        [SerializeField] private float _groundCheckDistance = 0.6f;
 
         private InputAction _moveAction;
         private InputAction _jumpAction;
@@ -40,9 +41,7 @@ namespace ProjectD.Core
         private void Update()
         {
             _moveValue = _moveAction.ReadValue<Vector2>(); 
-            //_isJump = _jumpAction.IsPressed(); // continue trigger if it's pressing
-            _isJump = _jumpAction.WasPressedThisFrame(); // trigger once when press
-            //_isJump = _jumpAction.WasReleasedThisFrame(); // trigger once when release
+            _isJump = _jumpAction.WasPressedThisFrame();
 
             if (_isJump)
             {
@@ -57,9 +56,6 @@ namespace ProjectD.Core
 
         public void Move()
         {
-            Debug.Log($"Right now move value is: {_moveValue}");
-            Debug.Log($"{_moveValue.x}");
-            Debug.Log($"{_moveValue.y}");
             Vector3 position = _transform.position;
 
             if (_moveValue.x < 0f)
@@ -78,8 +74,21 @@ namespace ProjectD.Core
 
         public void Jump()
         {
-            Debug.Log("It's jump");
-            _rigidbody.AddForce(Vector2.up * _jumpVelocity, ForceMode2D.Impulse);
+            Debug.Log(IsGrounded());
+            if (IsGrounded())
+            {
+                _rigidbody.AddForce(Vector2.up * _jumpVelocity, ForceMode2D.Impulse);
+            }
+        }
+
+        bool IsGrounded()
+        {
+            return Physics2D.Raycast(
+                _transform.position,
+                Vector2.down,
+                _groundCheckDistance,
+                _groundLayer
+            );
         }
     }
 }
