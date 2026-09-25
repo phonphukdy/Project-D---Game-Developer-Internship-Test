@@ -74,7 +74,6 @@ namespace ProjectD.Core
 
         public void Jump()
         {
-            Debug.Log(IsGrounded());
             if (IsGrounded())
             {
                 _rigidbody.AddForce(Vector2.up * _jumpVelocity, ForceMode2D.Impulse);
