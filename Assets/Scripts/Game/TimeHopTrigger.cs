@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class TimeHopTrigger : MonoBehaviour
+namespace ProjectD.Game
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class TimeHopTrigger : MonoBehaviour
     {
-        if (TimeManager.Instance != null)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            TimeManager.Instance.Hop();
+            if (TimeManager.Instance != null)
+            {
+                TimeManager.Instance.Hop();
+            }
         }
     }
 }

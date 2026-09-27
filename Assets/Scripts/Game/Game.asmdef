@@ -1,8 +1,9 @@
 {
     "name": "Game",
-    "rootNamespace": "",
+    "rootNamespace": "ProjectD.Game",
     "references": [
-        "GUID:80b6197eaeba69f4db731ab3849d0ebf"
+        "GUID:80b6197eaeba69f4db731ab3849d0ebf",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

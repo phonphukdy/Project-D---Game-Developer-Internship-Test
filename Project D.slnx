@@ -1,5 +1,6 @@
 ﻿<Solution>
-  <Project Path="Game.csproj" />
   <Project Path="Core.csproj" />
+  <Project Path="InventoryTests.csproj" />
+  <Project Path="Game.csproj" />
   <Project Path="UI.csproj" />
 </Solution>

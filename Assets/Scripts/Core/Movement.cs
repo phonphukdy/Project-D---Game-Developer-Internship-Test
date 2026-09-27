@@ -7,6 +7,8 @@ namespace ProjectD.Core
     public class Movement : MonoBehaviour
     {
         [SerializeField] private InputActionAsset _inputActions;
+        [SerializeField] private Rigidbody2D _rigidbody;
+        [SerializeField] private Transform _transform;   
         [SerializeField] private float _jumpVelocity = 5;
         [SerializeField] private float _moveVelocity = 5;
         [SerializeField] private LayerMask _groundLayer;
@@ -15,10 +17,10 @@ namespace ProjectD.Core
         private InputAction _moveAction;
         private InputAction _jumpAction;
 
-        private Rigidbody2D _rigidbody;
+        //private Rigidbody2D _rigidbody;
         private Vector2 _moveValue;
         private bool _isJump;
-        private Transform _transform;
+        //private Transform _transform;
 
         private void OnEnable()
         {
@@ -32,8 +34,8 @@ namespace ProjectD.Core
 
         private void Awake()
         {
-            _rigidbody = GetComponent<Rigidbody2D>();
-            _transform = GetComponent<Transform>();
+            //_rigidbody = GetComponent<Rigidbody2D>();
+            //_transform = GetComponent<Transform>();
             _moveAction = _inputActions.FindAction("Move");
             _jumpAction = _inputActions.FindAction("Jump");
         }

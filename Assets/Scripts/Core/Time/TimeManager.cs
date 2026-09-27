@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class TimeManager : MonoBehaviour
@@ -32,17 +31,6 @@ public class TimeManager : MonoBehaviour
             Debug.LogWarning("You didn't attach time config yet", this);
         }
     }
-
-    //private void Start()
-    //{
-    //    int count = Enum.GetValues(typeof(EPeriodsPerDay)).Length;
-    //    Debug.Log(count);
-
-    //    EWeekDay day = (EWeekDay)6;
-
-    //    Debug.Log(day);
-    //    Debug.Log((int)day);
-    //}
 
     public int Day()
     {
